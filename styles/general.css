@@ -23,8 +23,15 @@ button:active {
   align-items: center;
 }
 
+.noBorder {
+  border: none;
+  outline: none;
+}
+
 .container {
+  position: relative;
   width: 100%;
   height: 100vh;
   background: linear-gradient(135deg, #3e2723 0%, #8d6e63 50%, #5d4037 100%);
+  justify-content: center;
 }

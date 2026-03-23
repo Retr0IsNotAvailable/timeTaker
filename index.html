@@ -8,13 +8,33 @@
     <title>Time Taker</title>
 
     <link href="./styles/general.css" rel="stylesheet"/>
+    <link href="./styles/header.css" rel="stylesheet"/>
+    <link href="./styles/timeTaker.css" rel="stylesheet"/>
   </head>
   <body>
-    <div class="container">
-      <div class="timeTaker">
-        <div class="inputBox">
-          <input type="text" placeholder="Time"/>
+    <div class="container flexDiv">
+      <!-- header part of the website, contains:
+       website title on the left side
+       Total Time Studying (TTS) on the right side-->
+      <header class="flexDiv">
+        <div class="headerLeft">
+          <h1>Time Taker</h1>
         </div>
+        <div class="headerRight">
+          <h2>TTS: <span>2 hours 43 minutes</span></h2>
+        </div>
+      </header>
+      <div class="timeTaker">
+        <div class="inputBox flexDiv">
+          <input type="number" placeholder="mins"
+            class="timeInput"/>
+          <input type="text" placeholder="Subject"
+            class="subjectInput noBorder"/>
+          <button class="addButton noBorder">Add</button>
+        </div>
+        <ul>
+          <li><span>25 mins</span> web dev</li>
+        </ul>
       </div>
     </div>
     <script src="./js/index.js"></script>

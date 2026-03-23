@@ -1,0 +1,45 @@
+/* styles the for the header part of the time take
+ * in other words the search bar */
+
+.timeTaker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 25rem;
+  background: #fff;
+  border-radius: 0.9rem;
+}
+
+/* input box div */
+.timeTaker .inputBox {
+  background: #fff;
+  height: 3rem;
+  max-width: 90rem;
+  border: 1px solid #000;
+  border-radius: 1rem;
+  padding: 0 0 0 1rem;
+}
+
+/* time input box itself */
+.inputBox .timeInput {
+  max-width: 4rem;
+  margin-right: 1rem;
+}
+
+/* subject input box itself */
+.inputBox .subjectInput {
+  max-width: 14.2rem;
+  font-size: 1.5rem;
+}
+
+/* add button */
+.inputBox .addButton {
+  background: #000;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 0.6rem 0.7rem;
+  border-top-right-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+}

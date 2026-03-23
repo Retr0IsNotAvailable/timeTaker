@@ -1,0 +1,11 @@
+/* contains styles the header of the website */
+
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  justify-content: space-between;
+  background: #FDF0D6;
+  color: #000;
+}
