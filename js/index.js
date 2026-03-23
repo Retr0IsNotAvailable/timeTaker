@@ -1,7 +1,7 @@
 /* update the time each subject has take and TTS */
 
 // TTS DOM
-const TTS = document.querySelector(".tts");
+const TTSElement = document.querySelector(".tts");
 
 // time input, subject input, add button DOM's
 const timeInput = document.querySelector(".timeInput");
@@ -12,6 +12,9 @@ const addButton = document.querySelector(".addButton");
 const spanTime = document.querySelector(".spanTime");
 const spanSubject = document.querySelector(".spanSubject");
 const subjectsList = document.querySelector(".subjects");
+
+// total time study variable
+let tts = 0;
 
 // get time spent on subject
 function getTime() {
@@ -35,8 +38,17 @@ function addSubject(time, subject) {
   li.appendChild(spanTime);
   li.appendChild(spanSubject);
 
+  tts += parseInt(time) + 5;
   return li;
 }
+
+// update TTS
+function updateTTS(tts) {
+  const hours = Math.trunc(tts / 60);
+  const mins = tts % 60;
+
+  TTSElement.innerHTML = hours + " hours " + mins + " minutes";
+} 
 
 addButton.addEventListener("click", () => {
   const time =  getTime();
@@ -44,4 +56,6 @@ addButton.addEventListener("click", () => {
 
   const newList = addSubject(time, subject);
   subjectsList.appendChild(newList);
+
+  updateTTS(tts);
 });
