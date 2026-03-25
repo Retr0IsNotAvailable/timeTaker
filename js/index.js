@@ -15,12 +15,7 @@ const subjectsList = document.querySelector(".subjects");
 
 // total time study variable
 let tts = parseInt(retrieveStudyTime()) || 0;
-let studyDayList = retrieveDataList() || [
-  {
-    time: "25",
-    subject: "web dev"
-  }
-];
+let studyDayList = retrieveDataList() || [];
 
 updateTTS(tts);
 
@@ -54,7 +49,7 @@ function createListElement(myTime, mySubject) {
   const spanTime = document.createElement("span");
   const spanSubject = document.createElement("span");
 
-  spanTime.innerHTML = myTime + " ";
+  spanTime.innerHTML = myTime + " mins ";
   spanSubject.innerHTML = mySubject;
 
   li.appendChild(spanTime);
