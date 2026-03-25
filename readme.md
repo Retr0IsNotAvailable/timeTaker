@@ -1,1 +1,5 @@
-I don't know what to write here, lol
+# Time Taker
+This web app registers study time by taking subject name and time spent on it from the user.
+
+[Time Taker](https://firsthandsonproject.netlify.app/)
+
