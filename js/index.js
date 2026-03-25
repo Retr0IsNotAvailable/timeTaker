@@ -23,8 +23,6 @@ let studyDayList = retrieveDataList() || [
 ];
 
 updateTTS(tts);
-console.log(studyDayList);
-console.log(tts);
 
 // get time spent on subject
 function getTime() {
@@ -51,8 +49,7 @@ function saveData(dataList, studyTime) {
   localStorage.setItem("studyTime", JSON.stringify(studyTime));
 }
 
-// create a subject and give a time and append it
-function addSubject(myTime, mySubject, studydayList) {
+function createListElement(myTime, mySubject) {
   const li = document.createElement("li");
   const spanTime = document.createElement("span");
   const spanSubject = document.createElement("span");
@@ -63,13 +60,29 @@ function addSubject(myTime, mySubject, studydayList) {
   li.appendChild(spanTime);
   li.appendChild(spanSubject);
 
+  return li;
+}
+
+// add subjects retrieved from localstorage list
+function addData(dataList) {
+  for (const data of dataList) {
+    const li = createListElement(data.time, data.subject);
+    subjectsList.appendChild(li);
+  }
+}
+addData(studyDayList);
+
+// create a subject and give a time and append it
+function addSubject(myTime, mySubject) {
+  const li = createListElement(myTime, mySubject);
+
+  tts += parseInt(myTime) + 5;
+
   // add time/subject pair to list
   studyDayList.push({
     time: myTime,
     subject: mySubject
   });
-
-  tts += parseInt(myTime) + 5;
   return li;
 }
 
