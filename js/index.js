@@ -14,7 +14,17 @@ const spanSubject = document.querySelector(".spanSubject");
 const subjectsList = document.querySelector(".subjects");
 
 // total time study variable
-let tts = 0;
+let tts = parseInt(retrieveStudyTime()) || 0;
+let studyDayList = retrieveDataList() || [
+  {
+    time: "25",
+    subject: "web dev"
+  }
+];
+
+updateTTS(tts);
+console.log(studyDayList);
+console.log(tts);
 
 // get time spent on subject
 function getTime() {
@@ -26,19 +36,40 @@ function getSubject() {
   return subjectInput.value;
 }
 
+// retrive subjects from localstorage if any exist
+function retrieveDataList() {
+  return JSON.parse(localStorage.getItem("studyDayList"));
+}
+
+function retrieveStudyTime() {
+  return localStorage.getItem("studyTime");
+}
+
+// save data in localStorage
+function saveData(dataList, studyTime) {
+  localStorage.setItem("studyDayList", JSON.stringify(dataList));
+  localStorage.setItem("studyTime", JSON.stringify(studyTime));
+}
+
 // create a subject and give a time and append it
-function addSubject(time, subject) {
+function addSubject(myTime, mySubject, studydayList) {
   const li = document.createElement("li");
   const spanTime = document.createElement("span");
   const spanSubject = document.createElement("span");
 
-  spanTime.innerHTML = time + " ";
-  spanSubject.innerHTML = subject;
+  spanTime.innerHTML = myTime + " ";
+  spanSubject.innerHTML = mySubject;
 
   li.appendChild(spanTime);
   li.appendChild(spanSubject);
 
-  tts += parseInt(time) + 5;
+  // add time/subject pair to list
+  studyDayList.push({
+    time: myTime,
+    subject: mySubject
+  });
+
+  tts += parseInt(myTime) + 5;
   return li;
 }
 
@@ -54,8 +85,8 @@ addButton.addEventListener("click", () => {
   const time =  getTime();
   const subject = getSubject();
 
-  const newList = addSubject(time, subject);
+  const newList = addSubject(time, subject, studyDayList);
   subjectsList.appendChild(newList);
-
+  saveData(studyDayList, tts);
   updateTTS(tts);
 });
